@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --bg-darkest: #0e1017;
+  --bg-dark: #212432;
+  --bg-light: #fff8f1;
+  --text-dark: #22315b;
+  --text-light: #fff8f1;
+  --accent-one: #b19300;
+  --accent-two: #ffd400;
+  --primary-button: #3043d0;
+}
