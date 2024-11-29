@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local"
 import "./globals.css";
+import Preloader from "@/components/preloader";
 
 export const metadata: Metadata = {
   title: "What is stopping you? | London 2024 | Elevate CX",
@@ -24,6 +25,7 @@ export default function RootLayout({
       <body
         className={`antialiased`}
       >
+        <Preloader />
         {children}
       </body>
     </html>
