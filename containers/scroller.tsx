@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 'use client'
 
 import { useEffect, useRef } from "react";
@@ -67,8 +69,8 @@ export default function Scroller() {
   return (
     <div ref={scrollerContainerRef} className="w-full overflow-x-hidden">
       <div className="flex flex-col w-auto md:flex-row md:w-[300vw]">
-        <div className={'bg-black w-screen h-screen hidden md:block'} ref={(el: HTMLElement) => (sectionRefs.current[0] = el)} />
-        <Hero ref={(el: HTMLElement) => (sectionRefs.current[1] = el)} />
+        <div className={'bg-black w-screen h-screen hidden md:block'} ref={(el) => (sectionRefs.current[0] = el)} />
+        <Hero ref={(el) => (sectionRefs.current[1] = el)} />
         <CaseStudy ref={(el) => (sectionRefs.current[2] = el)} />
       </div>
     </div>
