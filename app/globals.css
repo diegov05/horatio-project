@@ -12,3 +12,19 @@
   --accent-two: #ffd400;
   --primary-button: #3043d0;
 }
+
+
+@media (max-width: 768px) {
+  * {
+    overflow-x: hidden;
+  }
+}
+
+body {
+  background-color: #000;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+  overflow-y: scroll;
+}
