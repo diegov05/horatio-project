@@ -5,10 +5,20 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Hero from "@/containers/hero";
 import CaseStudy from "@/containers/caseStudy";
+import Lenis from "@studio-freight/lenis";
 
 export default function Scroller() {
   const scrollerContainerRef = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<HTMLElement[]>([]);
+
+  const lenis = new Lenis();
+
+  function raf(time: number) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
 
   gsap.registerPlugin(ScrollTrigger);
 

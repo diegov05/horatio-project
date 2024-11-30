@@ -1,7 +1,20 @@
+'use client'
+
 import Button from "@/components/button";
 import Image from "next/image";
+import Lenis from "@studio-freight/lenis";
 
 export default function CTA() {
+
+  const lenis = new Lenis();
+
+  function raf(time: number) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+
   return (
     <section className="bg-[var(--bg-light)] h-full w-full p-3 pb-20 sm:px-5 lg:p-20">
       <div className="relative bg-[var(--text-dark)] h-full w-full rounded-3xl p-10">

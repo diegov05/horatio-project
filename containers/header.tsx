@@ -4,10 +4,21 @@ import './header.css'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useRef, useEffect } from 'react'
+import Lenis from "@studio-freight/lenis";
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function Header() {
+
+  const lenis = new Lenis();
+
+  function raf(time: number) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+
   const overlayRef = useRef(null)
 
   useEffect(() => {
