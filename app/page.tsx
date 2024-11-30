@@ -1,14 +1,15 @@
-import Header from "@/containers/header";
+import { CTA, Footer, Header, Scroller } from '@/containers'
 
 export default function Home() {
-  return (
-    <>
-      <header>
-        <Header />  
-      </header>
-      <main className={'w-screen h-screen bg-black'}>
 
+  return (
+    <div className={'flex flex-col'}>
+      <Header />
+      <main>
+        <Scroller />
+        <CTA />
       </main>
-    </>
+      <Footer />
+    </div>
   );
 }
