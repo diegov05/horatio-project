@@ -22,10 +22,10 @@ const Preloader = () => {
 
   return (
     <div
-      className={`fixed inset-0 flex items-center justify-center bg-black z-50 transition-opacity duration-1000 ${fadeOut ? "opacity-0 pointer-events-none" : "opacity-100"
+      className={`overflow-x-hidden fixed inset-0 flex items-center justify-center bg-black z-50 transition-opacity duration-1000 ${fadeOut ? "opacity-0 pointer-events-none" : "opacity-100"
         }`}
     >
-      <p className="text-white text-xl animate-pulse">Loading Experience...</p>
+      <p className="text-white text-xl animate-pulse">Loading Content...</p>
     </div>
   );
 };
