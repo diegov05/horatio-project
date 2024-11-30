@@ -2,39 +2,35 @@
 
 import './header.css'
 import { gsap } from 'gsap'
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import {useLayoutEffect, useRef} from "react";
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useRef, useEffect } from 'react'
+
+gsap.registerPlugin(ScrollTrigger)
 
 export default function Header() {
+  const overlayRef = useRef(null)
 
-  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const overlayElement = overlayRef.current
 
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      ScrollTrigger.create({
-        trigger: ref.current,
-        pin: ref.current,
-        start: "top top",
-        endTrigger: "",
-        end: "bottom bottom",
-        pinSpacing: false
+    if (overlayElement) {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: overlayElement,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+          pin: true
+        },
       })
 
-      gsap.timeline({
-        trigger: ref.current,
-        pin: ref.current,
-        scrub: 1,
-        start: "0% 0%",
-      })
-    })
-      .to()
-
-
-    return () => ctx.revert()
-  }, []);
+      tl.to(overlayElement, { opacity: 0 }, 0)
+      tl.to(overlayElement, { scale: 1.5 }, 0)
+    }
+  }, [])
 
   return (
-    <div className="overlay h-screen w-screen" ref={ref}>
+    <div ref={overlayRef} className="h-screen w-screen">
       <video
         loop
         autoPlay
@@ -42,26 +38,29 @@ export default function Header() {
         playsInline
         className="object-cover h-screen w-screen"
       >
-        <source src="/assets/london.mp4" type="video/mp4" />
+        <source src="/assets/london.mp4" type="video/mp4"/>
       </video>
-      <div className='absolute w-full h-full top-0 z-10'>
-        <div className='
-          flex 
-          flex-col 
-          justify-end 
-          items-center 
-          w-full 
+      <div className="absolute bg-black/70 w-full h-full top-0">
+        <div
+          className="
+          flex
+          flex-col
+          justify-center
+          md:justify-end
+          items-center
+          w-full
           h-full
-          p-10 
+          p-10
           md:p-20
-        '>
-          <div className='mouse' />
+        "
+        >
+          <div className="mouse"/>
           <div className="relative">
             <div
               className="
-                flex 
-                justify-between 
-                items-center 
+                flex
+                justify-between
+                items-center
               "
             >
               <p className="text-[var(--text-light)] text-sm sm:text-base uppercase font-bold">
@@ -77,21 +76,24 @@ export default function Header() {
                 text-2xl
                 sm:text-3xl
                 md:text-4xl
-                lg:text-6xl 
+                lg:text-6xl
                 uppercase
                 tracking-[1rem]
-                md:tracking-[2rem] 
-                lg:tracking-[3rem] 
-                xl:tracking-[5rem] 
-                text-[var(--text-light)] 
+                md:tracking-[2rem]
+                lg:tracking-[3rem]
+                xl:tracking-[5rem]
+                text-[var(--text-light)]
                 font-thin
               "
             >
-              Elevate <span className="text-[var(--accent-two)] tracking-normal">CX</span>
+              Elevate{' '}
+              <span className="text-[var(--accent-two)] tracking-normal">
+                CX
+              </span>
             </h1>
           </div>
         </div>
       </div>
     </div>
-  );
+  )
 }
